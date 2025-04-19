@@ -18,10 +18,10 @@ This project takes a user's mood description and generates a custom music playli
 ## Getting Started
 
 1. Clone the repo
-
+```
     git clone https://github.com/yourusername/music-mood-playlist.git
     cd music-mood-playlist
-
+```
 2. Set Up Environment Variables
 
 Create a .env file in the root directory with the following:
@@ -31,13 +31,13 @@ Create a .env file in the root directory with the following:
     OPENAI_API_KEY=your_openai_api_key
 
 3. Install Dependencies
-
+```
     pip install -r requirements.txt
-
+```
 4. Run the App
-
+```
     python app.py
-
+```
 Then open http://localhost:5000 in your web browser.
 
 
