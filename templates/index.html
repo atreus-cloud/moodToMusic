@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Mood to Playlist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f8f8f8;
+    }
+    .current {
+      background-color: #e0f7fa;
+      font-weight: bold;
+    }
+    button.track-btn {
+      border: none;
+      background: none;
+      padding: 10px;
+      text-align: left;
+      width: 100%;
+      cursor: pointer;
+    }
+    pre {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Music Mood to Playlist</h1>
+
+<form method="POST">
+  <input type="text" name="mood" placeholder="Describe your mood" required>
+  <button type="submit">Generate Playlist</button>
+</form>
+
+{% if tracks %}
+  <h2>Playlist for "{{ mood }}"</h2>
+  <img src="{{ art_url }}" alt="Album Art" style="width:300px; border-radius:12px; margin:20px 0;">
+
+  <form method="POST">
+    <input type="hidden" name="mood" value="{{ mood }}">
+    <ul style="list-style-type: none; padding: 0;">
+      {% for track in tracks %}
+        <li>
+          <button type="submit" name="track_index" value="{{ loop.index0 }}"
+            class="track-btn {% if loop.index0 == current_track_index %}current{% endif %}">
+            {{ loop.index }}. {{ track.name }} — {{ track.artist }}
+          </button>
+        </li>
+      {% endfor %}
+    </ul>
+  </form>
+
+  <h3>Lyrics for {{ tracks[current_track_index].name }} — {{ tracks[current_track_index].artist }}:</h3>
+  <pre>{{ lyrics }}</pre>
+{% endif %}
+
+</body>
+</html>
