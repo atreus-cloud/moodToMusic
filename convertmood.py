@@ -1,6 +1,10 @@
 import openai
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "your key here" 
+load_dotenv()
+
+openai.api_key = os.getenv("OPEN_AI_KEY")
 
 def get_mood_tags(user_input):
     prompt = f"""you are a music to mood classifier. convert this to 3 relevant music mood tags for the user mood as such: "{user_input}"."""
